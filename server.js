@@ -1,11 +1,11 @@
-const http = require('http');
-const url = require('url');
+import { createServer } from 'http';
+import { parse } from 'url';
 
 function start(route, handle) {
 	
 	function onRequest(request, response) {
 	  let postData = '';
-	  const pathname = url.parse(request.url).pathname;
+	  const pathname = parse(request.url).pathname;
 	  console.log('request for ' + pathname + ' received');
 
 	  request.setEncoding('utf8');
@@ -20,8 +20,9 @@ function start(route, handle) {
 	  });
 	}
 
-	http.createServer(onRequest).listen(8888);
+	createServer(onRequest).listen(8888);
 	console.log('server started...');
 }
 
-exports.start = start;
+const _start = start;
+export { _start as start };

@@ -1,13 +1,13 @@
 'use strict';
 
-const server = require('./server');
-const router = require('./router');
-const requestHandlers = require('./requestHandlers');
+import { start } from './server';
+import { route } from './router';
+import { start as _start, upload, show } from './requestHandlers';
 
 const handle = {};
-handle['/'] = requestHandlers.start;
-handle['/start'] = requestHandlers.start;
-handle['/upload'] = requestHandlers.upload;
-handle['/show'] = requestHandlers.show;
+handle['/'] = _start;
+handle['/start'] = _start;
+handle['/upload'] = upload;
+handle['/show'] = show;
 
-server.start(router.route, handle);
+start(route, handle);

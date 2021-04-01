@@ -1,8 +1,8 @@
 'use strict';
 
-import { start } from './server';
-import { route } from './router';
-import { start as _start, upload, show } from './requestHandlers';
+import { start } from './server.js';
+import { route } from './router.js';
+import { start as _start, upload, show } from './requestHandlers.js';
 
 const handle = {};
 handle['/'] = _start;
